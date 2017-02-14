@@ -1,7 +1,7 @@
 
 .project
 .classpath
-.class
+*.class
 bin/
 build/
 .settings/

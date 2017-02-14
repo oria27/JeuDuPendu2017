@@ -37,12 +37,15 @@ public class JeuDuPendu implements Partie {
 
 		String proposal = player.getPlay();
 
-		// Chercher si "proposal" est contenu dans "secretWord"
-		// Formuler autrement
 		// Chercher la position de "proposal" dans "secretWord"
-		//  Remplacer par "proposal" à la bonne positionn dans "currentWord"  
-		
-		
+		//  Si position >= 0 (trouvé)
+		//	 Dans "currentWord" à la position a-t-on un "_" ou "proposal" ?
+		//    Si "_", remplacer par "proposal" à la position dans "currentWord"
+		//    Si "proposal", ne rien faire
+		//  Si non
+		//   incrémenter "errorsCount"
+
+
 		errorsCount ++ ;
 	}
 
