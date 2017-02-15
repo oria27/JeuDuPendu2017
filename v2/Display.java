@@ -1,7 +1,10 @@
-package v2;
+package V2;
 
+/**
+ * Created by Ice on 15/02/2017.
+ */
 public interface Display {
 
-	void say(String message);
+        void say(String message);
 
 }

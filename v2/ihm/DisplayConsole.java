@@ -1,13 +1,13 @@
-package v2.ihm;
+package V2.ihm;
 
-import v2.Display;
+import V2.Display;
 
-public class DisplayConsole implements Display {
+/**
+ * Created by Ice on 15/02/2017.
+ */
+public class Displayconsole implements Display {
 
-	@Override
-	public void say(String message) {
-		System.out.println( message );
-		
-	}
-
+    public void say(String message) {
+        System.out.println( message );
+    }
 }
