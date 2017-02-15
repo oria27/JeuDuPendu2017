@@ -28,21 +28,14 @@ public class JeuDuPendu implements Partie {
 	}
 
 	private boolean secretWordFound() {
-		return false;
+
+		return secretWord.equals(currentWord);
 	}
 
 	@Override
 	public void nextPlay() {
 
 		String proposal = player.getPlay();
-
-		// Chercher la position de "proposal" dans "secretWord"
-		// Si position >= 0 (trouvé)
-		// Dans "currentWord" à la position a-t-on un "_" ou "proposal" ?
-		// Si "_", remplacer par "proposal" à la position dans "currentWord"
-		// Si "proposal", ne rien faire
-		// Si non
-		// incrémenter "errorsCount"
 
 		if (!isInWord(proposal)) {
 			errorsCount++;
@@ -56,12 +49,15 @@ public class JeuDuPendu implements Partie {
 
 		StringBuilder tempWord = new StringBuilder(currentWord);
 		char p = proposal.charAt(0);
+
 		for (int i = 0; i < secretWord.length(); i++) {
 			if (secretWord.charAt(i) == p) {
 				tempWord.setCharAt(i, p);
 			}
 		}
+
 		currentWord = tempWord.toString();
+
 	}
 
 	private boolean isInWord(String proposal) {
