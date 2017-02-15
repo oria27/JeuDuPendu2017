@@ -42,6 +42,12 @@ public class JeuDuPendu implements Partie {
     	
         String proposal = player.getPlay();
 
+        if( proposal == null)
+        	return ;
+        proposal = proposal.trim();
+        if( proposal.isEmpty() )
+        	return ;
+
         if (!isInWord(proposal)){
             errorsCount++;
         } else {

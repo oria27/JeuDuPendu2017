@@ -9,7 +9,8 @@ import v2.ihm.SaisieConsole;
  * Created by Ice on 14/02/2017.
  */
 public class Jeu {
-    public static void main(String[] args) {
+ 
+	public static void main(String[] args) {
 
         Partie partie = new JeuDuPendu();
         Player player = new JoueurDuPendu();
