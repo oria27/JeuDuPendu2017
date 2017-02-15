@@ -12,4 +12,6 @@ public interface Partie {
     void nextPlay();
 
     String getState();
+
+	void setWordGenerator(WordsGenerator wg);
 }

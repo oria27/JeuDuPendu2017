@@ -2,6 +2,7 @@ package v2;
 
 import v2.jeuDuPendu.JeuDuPendu;
 import v2.jeuDuPendu.JoueurDuPendu;
+import v2.wordsGenerators.WGOnline;
 import v2.ihm.DisplayConsole;
 import v2.ihm.SaisieConsole;
 
@@ -16,9 +17,11 @@ public class Jeu {
         Player player = new JoueurDuPendu();
         Display display = new DisplayConsole();
         Saisie saisie = new SaisieConsole();
+        WordsGenerator wg = new WGOnline();
 
         player.setSaisie(saisie);
 
+        partie.setWordGenerator( wg );
         partie.newPlay(player);
 
         display.say("Bonjour "+ player.getName());

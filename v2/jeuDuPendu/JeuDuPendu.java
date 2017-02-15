@@ -2,6 +2,7 @@ package v2.jeuDuPendu;
 
 import v2.Partie;
 import v2.Player;
+import v2.WordsGenerator;
 
 import java.lang.String;
 
@@ -14,18 +15,32 @@ public class JeuDuPendu implements Partie {
      */
     int errorsCount;
     private static final int errorsCountMax = 10;
-    String secretWord = "";
-    String currentWord = "";
+    String secretWord ;
+    String currentWord ;
     Player player;
+    WordsGenerator wordGenerator;
 
-    public void newPlay(Player player) {
+	@Override
+	public void setWordGenerator(WordsGenerator wordGenerator) {
+
+		this.wordGenerator = wordGenerator ;
+	}
+
+	public void newPlay(Player player) {
 
         this.player = player;
         randomiseSecretWord();
-        currentWord = setShadowWord();
+        setShadowWord();
+    }
+
+    private void randomiseSecretWord() {
+
+        secretWord = wordGenerator.getWord();
     }
 
     private String setShadowWord() {
+
+    	currentWord = "";
         for (int i = 0; i < secretWord.length(); i++) {
             currentWord += "_";
         }
@@ -36,12 +51,6 @@ public class JeuDuPendu implements Partie {
 
         return secretWordFound()
                || errorsCount >= errorsCountMax;
-    }
-
-    private void randomiseSecretWord() {
-
-        WordGenerator wg = new WGOnline();
-        secretWord = wg.getRandomWord();
     }
 
     public void nextPlay() {
