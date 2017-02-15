@@ -6,7 +6,7 @@ public class DisplayConsole implements Display {
 
 	@Override
 	public void say(String message) {
-		System.out.print( message );
+		System.out.println( message );
 		
 	}
 
