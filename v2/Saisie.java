@@ -1,16 +1,10 @@
-package V2;
-
-import java.util.Scanner;
+package v2;
 
 /**
  * Created by Ice on 15/02/2017.
  */
-public class Saisie {
+public interface Saisie {
 
-    private static final Scanner sc = new Scanner(System.in);
+    public String lireChaine(String prompt);
 
-    public static String lireChaine(String prompt) {
-        System.out.print(prompt);
-        return sc.nextLine();
-    }
 }

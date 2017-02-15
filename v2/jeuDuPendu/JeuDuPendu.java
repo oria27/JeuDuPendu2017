@@ -3,72 +3,93 @@ package v2.jeuDuPendu;
 import v2.Partie;
 import v2.Player;
 
+import java.lang.String;
+
+/**
+ * Created by Ice on 14/02/2017.
+ */
 public class JeuDuPendu implements Partie {
+    /**
+     * Attribute
+     */
+    int errorsCount;
+    private static final int errorsCountMax = 10;
+    String secretWord = "";
+    String currentWord = "";
+    Player player;
 
-	private static final int ErrorsCountMax = 4;
+    public void newPlay(Player player) {
 
-	int errorsCount;
-	String secretWord = "";
-	String currentWord = "";
+        this.player = player;
+        secretWord = "babar";
+        currentWord = setShadowWord();
+    }
 
-	Player player;
+    private String setShadowWord() {
+        for (int i = 0; i < secretWord.length(); i++) {
+            currentWord += "_";
+        }
+        return currentWord;
+    }
 
-	@Override
-	public void newPlay(Player player) {
+    public boolean isFinish() {
 
-		this.player = player;
-		secretWord = "Gateau";
-		currentWord = "______";
-	}
+        return secretWordFound()
+               || errorsCount >= errorsCountMax;
+    }
 
-	@Override
-	public boolean isFinish() {
+    public void nextPlay() {
+        String proposal = player.getPlay();
+        char p = proposal.charAt(0);
 
-		return secretWordFound() || (errorsCount >= ErrorsCountMax);
-	}
 
-	private boolean secretWordFound() {
+        if (!isInWord(proposal)){
+            errorsCount++;
+        } else {
 
-		return secretWord.equals(currentWord);
-	}
+                for (int i = 0; i < secretWord.length(); i++) {
+                    if (secretWord.charAt(i)==p){
 
-	@Override
-	public void nextPlay() {
+                        StringBuilder tempWord = new StringBuilder(currentWord);
+                        tempWord.setCharAt(i, p);
 
-		String proposal = player.getPlay();
+                        currentWord =  tempWord.toString();
+                    }
+                }
+            }
+    }
 
-		if (!isInWord(proposal)) {
-			errorsCount++;
-		} else {
-			updateCurrentWord(proposal);
-		}
+    private boolean isInWord(String proposal){
+        return secretWord.contains(proposal);
+    }
 
-	}
 
-	private void updateCurrentWord(String proposal) {
 
-		StringBuilder tempWord = new StringBuilder(currentWord);
-		char p = proposal.charAt(0);
 
-		for (int i = 0; i < secretWord.length(); i++) {
-			if (secretWord.charAt(i) == p) {
-				tempWord.setCharAt(i, p);
-			}
-		}
+    public String getState() {
+        if (!isFinish()){
+            return "Le Mot : "
+                    + currentWord
+                    + " (reste "+ (errorsCountMax-errorsCount) + " erreur(s))";
+        }else {
+            return result();
+        }
+    }
 
-		currentWord = tempWord.toString();
+    private boolean secretWordFound() {
+        if (currentWord.equals(secretWord)){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
-	}
-
-	private boolean isInWord(String proposal) {
-
-		return secretWord.contains(proposal);
-	}
-
-	@Override
-	public String getState() {
-
-		return "Le mot: " + currentWord + " (reste " + (ErrorsCountMax - errorsCount) + " erreur(s))";
-	}
+    private String result(){
+        if (secretWordFound()){
+            return "Victory";
+        }else {
+            return "You're dead";
+        }
+    }
 
 }

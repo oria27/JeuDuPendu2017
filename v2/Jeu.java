@@ -1,8 +1,9 @@
-package V2;
+package v2;
 
-import V2.JeuxDuPendu.JeuDuPendu;
-import V2.JeuxDuPendu.JoueurDuPendu;
-import V2.ihm.Displayconsole;
+import v2.jeuDuPendu.JeuDuPendu;
+import v2.jeuDuPendu.JoueurDuPendu;
+import v2.ihm.DisplayConsole;
+import v2.ihm.SaisieConsole;
 
 /**
  * Created by Ice on 14/02/2017.
@@ -12,7 +13,10 @@ public class Jeu {
 
         Partie partie = new JeuDuPendu();
         Player player = new JoueurDuPendu();
-        Display display = new Displayconsole();
+        Display display = new DisplayConsole();
+        Saisie saisie = new SaisieConsole();
+
+        player.setSaisie(saisie);
 
         partie.newPlay(player);
 
@@ -25,5 +29,6 @@ public class Jeu {
             partie.nextPlay();
             display.say(partie.getState());
         }
+
     }
 }

@@ -1,11 +1,11 @@
-package V2.ihm;
+package v2.ihm;
 
-import V2.Display;
+import v2.Display;
 
 /**
  * Created by Ice on 15/02/2017.
  */
-public class Displayconsole implements Display {
+public class DisplayConsole implements Display {
 
     public void say(String message) {
         System.out.println( message );
