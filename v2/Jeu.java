@@ -1,5 +1,6 @@
 package v2;
 
+import v2.ihm.DisplayConsole;
 import v2.jeuDuPendu.JeuDuPendu;
 import v2.jeuDuPendu.JoueurDuPendu;
 
@@ -9,15 +10,21 @@ public class Jeu {
 
 		Partie partie = new JeuDuPendu() ;
 		Player player = new JoueurDuPendu() ;
+		Display display = new DisplayConsole();
 		
 		partie.newPlay( player );
 
+		display.say( "Bonjour "+player.getName() );
+
+		display.say( partie.getState() );
+		
 		while( ! partie.isFinish() )
 		{
+			display.say("Indiquez une lettre");
+			
 			partie.nextPlay();
 			
-			System.out.println( partie.getState() );
-
+			display.say( partie.getState() );
 		}
 	}
 

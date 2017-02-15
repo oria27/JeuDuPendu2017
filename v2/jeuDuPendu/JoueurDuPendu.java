@@ -10,4 +10,10 @@ public class JoueurDuPendu implements Player {
 		return "a";
 	}
 
+	@Override
+	public String getName() {
+
+		return "Bob Moran";
+	}
+
 }
