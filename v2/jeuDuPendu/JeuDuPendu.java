@@ -21,7 +21,7 @@ public class JeuDuPendu implements Partie {
     public void newPlay(Player player) {
 
         this.player = player;
-        secretWord = "babar";
+        randomiseSecretWord();
         currentWord = setShadowWord();
     }
 
@@ -36,6 +36,12 @@ public class JeuDuPendu implements Partie {
 
         return secretWordFound()
                || errorsCount >= errorsCountMax;
+    }
+
+    private void randomiseSecretWord() {
+
+        WordGenerator wg = new WGOnline();
+        secretWord = wg.getRandomWord();
     }
 
     public void nextPlay() {
