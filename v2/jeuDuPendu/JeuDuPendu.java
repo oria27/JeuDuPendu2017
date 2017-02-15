@@ -39,33 +39,35 @@ public class JeuDuPendu implements Partie {
     }
 
     public void nextPlay() {
+    	
         String proposal = player.getPlay();
-        char p = proposal.charAt(0);
-
 
         if (!isInWord(proposal)){
             errorsCount++;
         } else {
-
-                for (int i = 0; i < secretWord.length(); i++) {
-                    if (secretWord.charAt(i)==p){
-
-                        StringBuilder tempWord = new StringBuilder(currentWord);
-                        tempWord.setCharAt(i, p);
-
-                        currentWord =  tempWord.toString();
-                    }
-                }
-            }
+        	updateCurrentWord( proposal );
+        }
     }
 
     private boolean isInWord(String proposal){
         return secretWord.contains(proposal);
     }
 
+    private void updateCurrentWord( String proposal )
+    {
+        char p = proposal.charAt(0);
+        for (int i = 0; i < secretWord.length(); i++) {
+            if (secretWord.charAt(i)==p){
 
+                StringBuilder tempWord = new StringBuilder(currentWord);
+                tempWord.setCharAt(i, p);
 
+                currentWord =  tempWord.toString();
+            }
+        }
 
+    }
+    
     public String getState() {
         if (!isFinish()){
             return "Le Mot : "
