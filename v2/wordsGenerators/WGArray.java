@@ -68,9 +68,6 @@ public class WGArray implements WordsGenerator {
 	public String getWord() {
 		
 		int i = (int) (Math.random() * wordList.length);
-
-		// System.out.println(wordList.length +" "+ i);
-		
 		return wordList[i];
 	}
 }
