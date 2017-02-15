@@ -1,13 +1,15 @@
-package v2;
+package V2;
 
+/**
+ * Created by Ice on 14/02/2017.
+ */
 public interface Partie {
 
-	void newPlay( Player player );
+    void newPlay(Player player);
 
-	boolean isFinish();
+    boolean isFinish();
 
-	void nextPlay();
+    void nextPlay();
 
-	String getState();
-
+    String getState();
 }
