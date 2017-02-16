@@ -1,5 +1,6 @@
 package v2.wordsGenerators;
 
+import v2.Saisie;
 import v2.WordsGenerator;
 
 /**
@@ -8,10 +9,17 @@ import v2.WordsGenerator;
  */
 public class WGUserInput implements WordsGenerator {
 
+	private Saisie saisie;
+
+	public WGUserInput( Saisie saisie )
+	{
+		this.saisie = saisie ;
+	}
+
 	@Override
 	public String getWord() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return saisie.lireChaine("Indiquez le mot à deviner: ");
 	}
 
 }

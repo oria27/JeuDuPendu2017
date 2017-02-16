@@ -10,4 +10,6 @@ public interface Player {
     String getName();
 
 	void setSaisie(Saisie saisie);
+
+	String askName();
 }
